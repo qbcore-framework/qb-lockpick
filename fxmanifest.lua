@@ -14,3 +14,5 @@ files {
     'html/style.css',
     'html/reset.css'
 }
+
+lua54 'yes'
