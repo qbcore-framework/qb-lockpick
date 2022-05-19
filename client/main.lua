@@ -13,8 +13,9 @@ RegisterNUICallback('callback', function(data, cb)
     cb('ok')
 end)
 
-RegisterNUICallback('exit', function()
+RegisterNUICallback('exit', function(_, cb)
     openLockpick(false)
+    cb('ok')
 end)
 
 openLockpick = function(bool)
