@@ -1,6 +1,9 @@
 # qb-lockpick
 Lockpick Mini-Game For QB-Core
 
+# UPDATE V 1.0.2
+FIXED FOR SOME COUNTRIES WHO COULDNT ACCESS DUE TO WAR
+
 # License
 
     QBCore Framework

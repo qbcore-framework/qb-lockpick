@@ -46,7 +46,7 @@ p {
 }
  #cylinder {
 	 display: block;
-	 background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/cylinder.png');
+	 background: url('https://i.imgur.com/LSAeMl4.png');
 	 background-size: cover;
 	 width: 69.914%;
 	 height: 69.914%;
@@ -58,7 +58,7 @@ p {
 	 display: block;
 	 width: 172.1739%;
 	 height: 84%;
-	 background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/driver.png');
+	 background: url('https://i.imgur.com/tvEtqll.png');
 	 background-size: cover;
 	 position: absolute;
 	 top: 57%;
@@ -82,7 +82,7 @@ p {
 	 position: absolute;
 	 top: 0;
 	 left: 0;
-	 background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/pinTop.png');
+	 background: url('https://i.imgur.com/1iReB7E.png');
 	 background-size: cover;
 }
  #pin .bott {
@@ -92,7 +92,7 @@ p {
 	 position: absolute;
 	 top: 50%;
 	 left: 0;
-	 background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/pinBott.png');
+	 background: url('https://i.imgur.com/h1XBrmu.png');
 	 background-size: cover;
 }
  #modal {
