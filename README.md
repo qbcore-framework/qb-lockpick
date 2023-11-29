@@ -1,5 +1,5 @@
 # qb-lockpick
-Lockpick Mini-Game For QB-Core
+Lockpick Mini-Game For QB-Core. Now with advanced difficulty options (as of 11/28/2023)!
 
 # License
 
