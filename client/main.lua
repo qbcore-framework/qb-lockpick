@@ -33,13 +33,13 @@ openLockpick = function(bool, options)
 
     if options then
         options["action"] = "option"
-        SendNUIMessage(options)
     else
         options = {
             action = "option",
             reset = true
         }
     end
+    SendNUIMessage(options)
     SetNuiFocus(bool, bool)
     SendNUIMessage({
         action = "ui",
