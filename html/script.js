@@ -47,24 +47,13 @@ $(function () {
         } else if (eventData.action == "option") {
             //Why are we adding options to change these not just changing them? Why, backwards compatibility, of course!
             if (eventData.reset) {
-                minRot = -90
-                maxRot = 90
-                solveDeg = (Math.random() * 180) - 90
+                //This is disabled as a feature, allows a player to try with the same "lock" position
+                //Honestly, using pins instead would've been smoother but adds a bunch of overhead for other devs
+                //solveDeg = (Math.random() * 180) - 90
                 solvePadding = 4
-                maxDistFromSolve = 45
-                pinRot = 0
-                cylRot = 0
-                lastMousePos = 0
-                mouseSmoothing = 2
-                keyRepeatRate = 25
-                cylRotSpeed = 3
                 pinDamage = 20
                 pinHealth = 100
                 pinDamageInterval = 150
-                numPins = 1
-                userPushingCyl = false
-                gameOver = false
-                gamePaused = false
                 pinDamageMaxHealth = 0, //Reccomended: 5
                 pinRegenPerSecond = 0, //Reccomended: 10
                 pinMaxHealth = 100
