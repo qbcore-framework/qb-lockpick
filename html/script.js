@@ -16,6 +16,9 @@ var minRot = -90,
     userPushingCyl = false,
     gameOver = false,
     gamePaused = false,
+    pinMaxHealth = 100,
+    pinDamageMaxHealth = 0, //Reccomended: 5
+    pinRegenPerSecond = 0, //Reccomended: 10
     pin, cyl, driver, cylRotationInterval, pinLastDamaged;
 
 
@@ -40,6 +43,49 @@ $(function () {
                 $('#wrap').fadeOut(50);
                 gameOver = false
                 gamePaused = false
+            }
+        } else if (eventData.action == "option") {
+            //Why are we adding options to change these not just changing them? Why, backwards compatibility, of course!
+            if (eventData.reset) {
+                //This is disabled as a feature, allows a player to try with the same "lock" position
+                //Honestly, using pins instead would've been smoother but adds a bunch of overhead for other devs
+                //solveDeg = (Math.random() * 180) - 90
+                solvePadding = 4
+                pinDamage = 20
+                pinHealth = 100
+                pinDamageInterval = 150
+                pinDamageMaxHealth = 0, //Reccomended: 5
+                pinRegenPerSecond = 0, //Reccomended: 10
+                pinMaxHealth = 100
+            }
+
+            if (eventData.solveWindowDegrees) {
+                solvePadding = eventData.solveWindowDegrees //If this is 4 (default), then 2 degrees on either side of the correct angle will also unlock this.
+            }
+
+            if (eventData.pinHealth) {
+                pinHealth = eventData.pinHealth //The starting health of the pin. By default, results in 0.75second break time with no regen
+            }
+
+            if (eventData.IFramesMS) {
+                pinDamageInterval = eventData.IFramesMS //How much time between hits of damage when trying a pin
+            }
+
+            if (eventData.IncorrectTryDamage) {
+                pinDamage = eventData.IncorrectTryDamage //How much damage the pin takes when tried incorrectly
+            }
+
+            if (eventData.pinMaxHealth) {
+                pinMaxHealth = eventData.pinMaxHealth //The max health the pin starts with. If regen is enabled, decreases when an incorrect try is made
+                pinHealth = pinMaxHealth
+            }
+
+            if (eventData.pinDamageMaxHealth) {
+                pinDamageMaxHealth = eventData.pinDamageMaxHealth //How much max health damage the pin takes when an incorrect try is made. Only does anything if regen is enabled
+            }
+
+            if (eventData.pinRegenPerSecond) {
+                pinRegenPerSecond = eventData.pinRegenPerSecond //How much HP per second the pin will regenerate while not being tried
             }
         }
     })
@@ -149,7 +195,21 @@ function unpushCyl() {
 function damagePin() {
     if (!pinLastDamaged || Date.now() - pinLastDamaged > pinDamageInterval) {
         var tl = new TimelineLite();
+
+        var timeSinceDamage = 0
+        
+        if (pinLastDamaged) {
+            timeSinceDamage =  Date.now() - pinLastDamaged;
+        }
+
+        pinMaxHealth -= pinDamageMaxHealth;
+
+        pinHealth += pinRegenPerSecond / 1000 * timeSinceDamage;
+
+        pinHealth = Math.min(pinMaxHealth, pinHealth);
+
         pinHealth -= pinDamage;
+        
         pinLastDamaged = Date.now()
 
         //pin damage/lock jiggle animation
@@ -201,6 +261,9 @@ function reset() {
     cylRot = 0;
     pinHealth = 100;
     pinRot = 0;
+    pinDamageMaxHealth = 0;
+    pinRegenPerSecond = 0;
+    pinMaxHealth = 100;
     pin.css({
         transform: "rotateZ(" + pinRot + "deg)"
     })

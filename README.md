@@ -1,5 +1,5 @@
 # qb-lockpick
-Lockpick Mini-Game For QB-Core
+Lockpick Mini-Game For QB-Core. Now with advanced difficulty options (as of 11/28/2023)! Fully backward compatible with the original qb-lockpick. This version can replace an existing default install and cause no issues.
 
 # License
 
