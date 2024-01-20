@@ -1,8 +1,15 @@
 local lockpickCallback = nil
+local ped = PlayerPedId()
+
+function loadAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do
+        RequestAnimDict(dict)
+        Wait(0)
+    end
+end
 
 AddEventHandler('qb-lockpick:client:openLockpick', function(callback)
     lockpickCallback = callback
-    local ped = PlayerPedId()
     local animDict = "anim@amb@clubhouse@tutorial@bkr_tut_ig3@"
     local anim = "machinic_loop_mechandplayer"
     loadAnimDict(animDict)
